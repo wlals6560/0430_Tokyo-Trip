@@ -149,9 +149,16 @@ export interface TravelSpot {
   description: string;
   googleMapsUrl: string;
   region: '신주쿠' | '시부야' | '도쿄역' | '아카사카';
-  category: '식당' | '카페' | '디저트' | '오전 오픈 카페' | '아침/마트';
+  category: '식당' | '카페' | '디저트' | '오전 오픈 카페' | '아침거리' | '마트';
   imageUrl?: string;
 }
+
+export const DON_QUIJOTE_LOCATIONS = [
+  { id: 'sh-dq-1', name: '돈키호테 신주쿠가부키초점', type: '할인잡화점', description: '가부키초 입구에 위치한 대형 돈키호테.', region: '신주쿠', category: '쇼핑', googleMapsUrl: 'https://www.google.com/maps/place/%EB%8F%88%ED%82%A4%ED%98%B8%ED%85%8C+%EC%8B%A0%EC%A3%BC%EC%BF%A0%EA%B0%80%EB%B6%80%ED%82%A4%EC%B4%88%20%EC%A0%90/@35.6937755,139.7017873' },
+  { id: 'sh-dq-2', name: '돈키호테 신주쿠 도난구치점', type: '할인잡화점', description: '신주쿠역 동남쪽 출구 인근 돈키호테.', region: '신주쿠', category: '쇼핑', googleMapsUrl: 'https://www.google.com/maps/place/Don+Quijote+Shinjuku+Tonanguchi/@35.6900987,139.7019999' },
+  { id: 'sh-dq-3', name: 'Don Quijote (신주쿠)', type: '할인잡화점', description: '신주쿠 동쪽 출구 인근 매장.', region: '신주쿠', category: '쇼핑', googleMapsUrl: 'https://www.google.com/maps/place/Don+Quijote/@35.690115,139.7029753' },
+  { id: 'sh-dq-4', name: '메가 돈키호테 시부야 본점', type: '할인잡화점', description: '시부야 최대 규모의 메가 돈키호테.', region: '시부야', category: '쇼핑', googleMapsUrl: 'https://www.google.com/maps/place/MEGA+Don+Quijote+Shibuya+Main+Store/@35.6603873,139.6978172' },
+];
 
 export const TRAVEL_SPOTS: TravelSpot[] = [
   // --- 신주쿠 식당 ---
@@ -200,6 +207,20 @@ export const TRAVEL_SPOTS: TravelSpot[] = [
   { id: 'rs-as-1', name: '츠지한 아카사카아크힐즈점', type: '카이센동', description: '인생 카이센동으로 불리는 맛집.', region: '아카사카', category: '식당', googleMapsUrl: 'https://maps.app.goo.gl/gaKZWBFGXh9865eC8' },
   { id: 'rs-as-2', name: '스노미도리 아카사카점', type: '스시', description: '아카사카 인기 스시 전문점.', region: '아카사카', category: '식당', googleMapsUrl: 'https://www.google.com/maps/place/%EC%8A%A4%EC%8B%9C%EB%85%B8%EB%AF%B8%EB%8F%84%EB%A6%AC+%EC%95%84%EC%B9%B4%EC%82%AC%EC%B9%B4%00' },
 
+  // --- 디저트 ---
+  { id: 'ds-sj-1', name: '타카노 후르츠 파ーラー 신주쿠 본점', type: '과일 파르페', description: '과일 파르페 맛집', region: '신주쿠', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Takano%20Fruit%20Parlor%20Shinjuku' },
+  { id: 'ds-sj-2', name: 'HARBS 루미네에스트 신주쿠점', type: '밀크레이프', description: '밀크레이프!!!', region: '신주쿠', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=HARBS%20Lumine%20Est%20Shinjuku' },
+  { id: 'ds-sj-3', name: '오이와케 당고 혼포', type: '당고', description: '300년 전통당고 노포', region: '신주쿠', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Oiwake%20Dango%20Honpo%20Shinjuku' },
+  { id: 'ds-sj-4', name: '사다하루 아오키 파리 이세탄 신주쿠점', type: '프랑스 디저트', description: '말차·유자 등 일본 재료를 프랑스식 디저트로 풀어낸 브랜드(고오급 선물가능)', region: '신주쿠', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Sadaharu%20Aoki%20Paris%20Isetan%20Shinjuku' },
+  { id: 'ds-sb-1', name: 'satella', type: '푸딩', description: '치즈케이크 같은 진한 푸딩', region: '시부야', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=satella%20Shibuya%20Tokyo' },
+  { id: 'ds-sb-2', name: 'HARBS 시부야 히카리에 ShinQs점', type: '밀크레이프', description: '밀크레이프!!!', region: '시부야', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=HARBS%20Shibuya%20Hikarie%20ShinQs' },
+  { id: 'ds-tk-1', name: 'DEPOT', type: '푸딩', description: '레트로 푸딩, 나폴리탄+푸딩', region: '도쿄역', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=DEPOT%20Tokyo%20Station' },
+  { id: 'ds-tk-2', name: 'PRESS BUTTER SAND 도쿄역점', type: '버터샌드', description: '선물용 디저트로 한국인에게 매우 유명한 브랜드', region: '도쿄역', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=PRESS%20BUTTER%20SAND%20Tokyo%20Station' },
+  { id: 'ds-tk-3', name: '파티스리 사다하루 아오키 파리 마루노우치점', type: '프랑스 디저트', description: '예쁜 프랑스식 디저트·말차 디저트', region: '도쿄역', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Patisserie%20Sadaharu%20Aoki%20Paris%20Marunouchi' },
+  { id: 'ds-as-1', name: '토시 요로이즈카 도쿄 미드타운점', type: '프랑스 디저트', description: '유명 파티시에의 디저트 전문점 (고오급 디저트)', region: '아카사카', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Toshi%20Yoroizuka%20Tokyo%20Midtown' },
+  { id: 'ds-as-2', name: '파티스리 사다하루 아오키 파리 도쿄 미드타운점', type: '프랑스 디저트', description: '말차 계열 프랑스 디저트', region: '아카사카', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Sadaharu%20Aoki%20Paris%20Tokyo%20Midtown' },
+  { id: 'ds-as-3', name: '아카사카 아오노 본점', type: '화과자', description: '화과자, 모찌 노포', region: '아카사카', category: '디저트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Akasaka%20Aono%20Honten' },
+
   // --- 신주쿠 카페 ---
   { id: 'cf-sj-1', name: 'THE MATCHA TOKYO NEWoMan 신주쿠', type: '말차', description: '신주쿠역 앞 말차 테이크아웃 전문.', region: '신주쿠', category: '카페', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=THE%20MATCHA%20TOKYO%20NEWoMan%20Shinjuku' },
   { id: 'cf-sj-2', name: '교토 사료 스이센 신주쿠', type: '말차 디저트', description: '말차 와라비모치/파르페 추천.', region: '신주쿠', category: '카페', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Kyoto%20Saryo%20Suisen%20Shinjuku' },
@@ -237,7 +258,17 @@ export const TRAVEL_SPOTS: TravelSpot[] = [
   { id: 'cf-as-5', name: 'Le Pain Quotidien 도쿄 미드타운점', type: '카페', description: '분위기 좋은 정통 베이커리 카페.', region: '아카사카', category: '카페', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Le%20Pain%20Quotidien%20Tokyo%20Midtown' },
 
   // --- 기성 추가 항목 ---
-  { id: 'am-1', name: '마루에츠 푸치 니시신주쿠 3초메점', type: '슈퍼마켓', description: '숙소 인접 거주형 마트.', region: '신주쿠', category: '아침/마트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Maruetsu%20Petit%20Nishi-Shinjuku%203-chome' },
+  { id: 'am-1', name: '마루에츠 푸치 니시신주쿠 3초메점', type: '슈퍼마켓', description: '마루에츠 쁘띠버전', region: '신주쿠', category: '마트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Maruetsu%20Petit%20Nishi-Shinjuku%203-chome' },
+  { id: 'mt-sj-1', name: '게이오백화점 신주쿠점 지하 식품관', type: '백화점 식품관', description: '게이오백화점 신주쿠점 지하 식품관', region: '신주쿠', category: '마트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Keio%20Department%20Store%20Shinjuku%20Food%20Floor' },
+  { id: 'mt-sj-2', name: '이세탄 신주쿠점 지하 식품관', type: '백화점 식품관', description: '이세탄 신주쿠점 지하 식품관', region: '신주쿠', category: '마트', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Isetan%20Shinjuku%20Food%20Floor' },
+  { id: 'mt-sj-3', name: '마루에츠 푸치 니시신주쿠육쵸메점', type: '슈퍼마켓', description: '마루에츠 쁘띠버전', region: '신주쿠', category: '마트', googleMapsUrl: 'https://www.google.com/maps/place/%EB%A7%88%EB%A3%A8%EC%97%90%EC%B8%A0+%ED%91%B8%EC%B9%98+%EB%8B%88%EC%8B%9C%EC%8B%A0%EC%A3%BC%EC%BF%A0%EC%9C%A1%EC%B5%B8%EB%A9%94%EC%A0%90/@35.692262,139.6824325,16z/data=!3m1!5s0x6018f2d59c2eefe5:0x2c49e5ba70074d9f!4m11!1m3!2m2!1z7Iug7KO87L-gIOuniO2KuA!6e6!3m6!1s0x6018f2d5837411b9:0x2b46298b41b2b51e!8m2!3d35.692262!4d139.688623' },
+  { id: 'mt-sj-4', name: '루미네 신주쿠 LUMINE1', type: '식품관/도시락', description: '도시락. 오니기리, 밀키트 등 간편식 위주', region: '신주쿠', category: '마트', googleMapsUrl: 'https://www.google.com/maps/place/%EB%A3%A8%EB%AF%B8%EB%84%A4+%EC%8B%A0%EC%A3%BC%EC%BF%A0+1/@35.6884575,139.6930029,16.5z/data=!4m11!1m3!2m2!1z7Iug7KO87L-gIOuniO2KuA!6e6!3m6!1s0x60188cd08eaaaaab:0x63cae4f1f9b01c6e!8m2!3d35.6892039!4d139.699147' },
+  { id: 'mt-sj-5', name: '오무스비 코메야노 타로 신주쿠센터빌딩점', type: '오니기리', description: '오무스비 코메야노 타로', region: '신주쿠', category: '아침거리', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Omusubi%20Komeya%20no%20Taro%20Shinjuku%20Center%20Building' },
+  { id: 'mt-sj-6', name: '요모다소바 신주쿠니시구치점', type: '소바/카레', description: '일본식 아침, 소바·카레, 서서 먹는곳?', region: '신주쿠', category: '아침거리', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Yomoda%20Soba%20Shinjuku%20Nishiguchi' },
+  { id: 'mt-sj-7', name: '하나마루 우동 신주쿠 NS빌딩점', type: '우동', description: '하나마루 우동 NS빌딩점', region: '신주쿠', category: '아침거리', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Hanamaru%20Udon%20Shinjuku%20NS%20Building' },
+  { id: 'mt-sj-8', name: '마츠야 신주쿠니시구치점', type: '규동/정식', description: '일본식 아침 정식, 소시지에그·돼지국·연어구이 정식 등, 24시 영업', region: '신주쿠', category: '아침거리', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Matsuya%20Shinjuku%20Nishiguchi' },
+  { id: 'mt-sj-9', name: '나카우 니시신주쿠점', type: '우동/덮밥', description: '일본식 아침, 우동·덮밥·가벼운 정식류, 호텔-역 동선 살짝 벗어남', region: '신주쿠', category: '아침거리', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Nakau%20Nishi-Shinjuku' },
+  { id: 'mt-sj-10', name: '오니기리 만마 신주쿠점', type: '오니기리', description: '오니기리, 호텔-역 동선 살짝 벗어남', region: '신주쿠', category: '아침거리', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Onigiri%20Mamma%20Shinjuku' },
 ];
 
 export const SHOPPING_CHECKLIST = [

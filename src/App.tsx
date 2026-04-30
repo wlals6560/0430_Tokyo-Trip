@@ -13,13 +13,15 @@ import {
   Calendar,
   AlertCircle,
   Clock,
-  Store
+  Store,
+  ChevronUp
 } from 'lucide-react';
 import { 
   TRAVEL_SPOTS, 
   SHOPPING_CHECKLIST, 
   TASKS_BEFORE_TRIP, 
   ITINERARY,
+  DON_QUIJOTE_LOCATIONS,
   TravelSpot 
 } from './data';
 
@@ -47,7 +49,7 @@ export default function App() {
 
   const filteredSpots = TRAVEL_SPOTS.filter(spot => {
     const matchesRegion = selectedRegion === '전체' || spot.region === selectedRegion;
-    const isGeneralCategory = spot.category !== '아침/마트';
+    const isGeneralCategory = spot.category !== '마트';
     const matchesCategory = selectedCategory === '전체' ? isGeneralCategory : spot.category === selectedCategory;
     const matchesSearch = spot.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          spot.type.toLowerCase().includes(searchQuery.toLowerCase());
@@ -55,7 +57,7 @@ export default function App() {
   });
 
   const regions = ['전체', ...Array.from(new Set(TRAVEL_SPOTS.map(s => s.region)))];
-  const categories = ['전체', '식당', '카페', '오전 오픈 카페', '디저트'];
+  const categories = ['전체', '식당', '카페', '오전 오픈 카페', '디저트', '아침거리', '마트'];
 
   // Group itinerary by date
   const itineraryGrouped = Array.from(new Set(ITINERARY.map(item => item.date))).map(date => ({
@@ -66,14 +68,23 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background text-[#1E1B4B] font-sans pb-32">
       {/* Header */}
-      <header className="px-8 pt-16 pb-8 bg-surface/80 backdrop-blur-md sticky top-0 z-40 border-b border-[#EEF2FF]">
-        <div className="max-w-3xl mx-auto flex flex-col items-start gap-1">
-          <p className="text-[10px] font-bold text-brand uppercase tracking-[0.3em]">
-            Tokyo Travel Navigator
-          </p>
-          <h1 className="text-4xl font-extrabold tracking-tight text-[#0F172A]">
-            도쿄 <span className="text-brand">여행기</span>
-          </h1>
+      <header className="px-8 py-6 bg-surface/80 backdrop-blur-md sticky top-0 z-40 border-b border-[#EEF2FF]">
+        <div className="max-w-3xl mx-auto flex items-center justify-between">
+          <div className="flex flex-col items-start gap-0.5">
+            <p className="text-[9px] font-black text-brand uppercase tracking-[0.3em]">
+              Tokyo Travel Plan
+            </p>
+            <h1 className="text-2xl font-black tracking-tight text-[#0F172A]">
+              우리 가족 <span className="text-brand">도쿄 여행</span>
+            </h1>
+          </div>
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="p-3 bg-brand-light rounded-2xl text-brand hover:bg-brand hover:text-white transition-all shadow-sm"
+            title="맨 위로 가기"
+          >
+            <ChevronUp className="w-5 h-5 font-black" />
+          </button>
         </div>
       </header>
 
@@ -477,6 +488,26 @@ export default function App() {
               </button>
 
               <div className="bg-surface p-10 rounded-[3rem] border border-[#EEF2FF] shadow-[0_20px_60px_-15px_rgba(124,58,237,0.1)]">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-brand-light rounded-2xl text-brand">
+                    <MapPin className="w-8 h-8" />
+                  </div>
+                  <h2 className="text-3xl font-black tracking-tight text-[#0F172A]">돈키호테 위치</h2>
+                </div>
+                <div className="grid grid-cols-1 gap-4 mb-12">
+                  {DON_QUIJOTE_LOCATIONS.map(loc => (
+                    <div key={loc.id} className="bg-white p-6 rounded-[2rem] border border-[#EEF2FF] flex justify-between items-center group hover:border-brand/20 transition-all shadow-sm">
+                      <div>
+                        <h3 className="text-base font-black text-[#1E1B4B]">{loc.name}</h3>
+                        <p className="text-[10px] font-black text-[#94A3B8] uppercase tracking-widest mt-1">{loc.region} · {loc.description}</p>
+                      </div>
+                      <a href={loc.googleMapsUrl} target="_blank" rel="no-referrer" className="p-3 bg-brand-light rounded-2xl text-brand hover:bg-brand hover:text-white transition-all">
+                        <MapPin className="w-4 h-4" />
+                      </a>
+                    </div>
+                  ))}
+                </div>
+
                 <div className="flex items-center gap-4 mb-10">
                   <div className="p-3 bg-pink-50 rounded-2xl text-[#ec4899]">
                     <ShoppingBag className="w-8 h-8" />
@@ -551,7 +582,7 @@ export default function App() {
                   <h2 className="text-3xl font-black tracking-tight text-[#0F172A]">마트 위치</h2>
                 </div>
                 <div className="grid grid-cols-1 gap-6">
-                  {TRAVEL_SPOTS.filter(s => s.category === '아침/마트').map(spot => (
+                  {TRAVEL_SPOTS.filter(s => s.category === '마트').map(spot => (
                     <div key={spot.id} className="bg-surface p-6 rounded-[2.5rem] border border-[#EEF2FF] shadow-sm hover:shadow-md transition-all">
                       <div className="flex-1">
                         <div className="flex justify-between items-start mb-4">
